@@ -1,0 +1,1441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1560</width>
+    <height>815</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Dark Theme for the entire application */
+QMainWindow {
+    background-color: #02355F; /* Navy blue background */
+}
+
+QWidget {
+    background-color: #02355F;
+}
+
+/* Styling for Labels */
+QLabel {
+    font-size: 14px;
+    color: #ffffff; /* White text color */
+}
+
+/* Styling for Line Edits (not readOnly) */
+QLineEdit[readOnly=&quot;false&quot;] {
+    background-color: #D3D3D3; /* Slightly darker background */
+    border: 2px solid #1DB954; /* Spotify green border */
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* Hover effect for Line Edits (not readOnly) */
+QLineEdit[readOnly=&quot;false&quot;]:hover {
+    background-color: #1E1E1E; /* Slightly lighter background on hover */
+    border-color: #33A2FF; /* Light blue border on hover */
+}
+
+/* Focus effect for Line Edits (not readOnly) */
+QLineEdit[readOnly=&quot;false&quot;]:focus {
+    border-color: #33A2FF; /* Light blue border on focus */
+}
+
+/* Styling for Line Edits (readOnly) */
+QLineEdit[readOnly=&quot;true&quot;] {
+    background-color: #1f1e1e; /* Slightly darker background */
+    border: 2px solid #1DB954; /* Spotify green border */
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* Style for Line Edits that are disabled */
+QLineEdit:disabled {
+    background-color: #666666; /* Gray background for disabled state */
+    border: 2px solid #999999; /* Gray border for disabled state */
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #999999; /* Light gray text color for disabled state */
+}
+
+/* Styling for Push Buttons */
+QPushButton {
+    background-color: #0073e6;
+    color: #ffffff;
+    border: 2px solid #00509e;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Hover effect for &quot;add&quot; QPushButton */
+QPushButton[accessibleName=&quot;add&quot;]:hover {
+    background-color: #107d38;
+}
+
+/* Hover effect for &quot;delete&quot; QPushButton */
+QPushButton[accessibleName=&quot;delete&quot;]:hover {
+    background-color: #107d38;
+}
+
+/* Styling for QTextEdit */
+QTextEdit {
+    background-color: #121212;
+    border: 2px solid #1DB954;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+QTextEdit:hover {
+    background-color: #1E1E1E;
+    border-color: #33A2FF;
+}
+
+QTextEdit:focus {
+    border-color: #33A2FF;
+}
+
+/* Styling for QComboBox */
+QComboBox {
+    background-color: #121212;
+    border: 2px solid #1DB954;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+QComboBox:hover {
+    background-color: #1E1E1E;
+    border-color: #33A2FF;
+}
+
+QComboBox:focus {
+    border-color: #33A2FF;
+}
+
+/* Styling for QGroupBox */
+QGroupBox {
+    border: none;
+}
+
+QGroupBox::title {
+    color: #ffffff;
+}
+
+QGroupBox:hover {
+    background-color: #1E1E1E;
+}
+
+/* Styling for QScrollBar */
+QScrollBar:vertical {
+    background: #121212;
+    width: 10px;
+}
+
+QScrollBar::handle:vertical {
+    background: #1DB954;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+/* Styling for QListView */
+QListView {
+    background-color: #121212;
+    border: 2px solid #1DB954;
+    border-radius: 5px;
+    color: #ffffff;
+    selection-background-color: #1DB954;
+}
+
+/* Styling for QTabWidget */
+QTabWidget {
+    background-color: #212121;
+}
+
+QTabBar::tab {
+    padding: 10px 25px;
+}
+
+QTabBar::tab:selected {
+    background-color: #1DB954;
+    color: #ffffff;
+}
+
+QTabBar::tab:!selected {
+    background-color: #212121;
+    color: #b3b3b3;
+}
+
+/* Styling for QTableView and QTableWidget */
+QTableView, QTableWidget {
+    background-color: #02355F; /* Navy blue table background */
+    border: 1px solid #666666; /* Fine gray border */
+    border-radius: 5px;
+    color: #ffffff;
+    selection-background-color: #1DB954;
+    font-size: 18px;
+}
+
+/* Header style for QTableView and QTableWidget */
+QHeaderView::section {
+    background-color: #1DB954;
+    color: #ffffff;
+    padding: 5px;
+    border: 1px solid #666666; /* Fine gray borders for headers */
+}
+
+/* Row style for QTableView and QTableWidget */
+QTableView::item, QTableWidget::item {
+    border: 1px solid #666666; /* Fine gray row and column borders */
+    padding: 5px;
+}
+
+/* Row hover effect */
+QTableView::item:hover, QTableWidget::item:hover {
+    background-color: #333333;
+}
+
+/* Selected row style */
+QTableView::item:selected, QTableWidget::item:selected {
+    background-color: #1DB954;
+    color: #ffffff;
+}
+
+/* Styling for QSpinBox and QDoubleSpinBox */
+QSpinBox[readOnly=&quot;false&quot;], QDoubleSpinBox[readOnly=&quot;false&quot;] {
+    background-color: #121212;
+    border: 2px solid #1DB954;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+QSpinBox[readOnly=&quot;true&quot;], QDoubleSpinBox[readOnly=&quot;true&quot;] {
+    background-color: #1f1e1e;
+    border: 2px solid #1DB954;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="gs_table">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1441</width>
+      <height>731</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Triangular</enum>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="icon">
+      <iconset resource="rescource.qrc">
+       <normaloff>:/res/client.ico</normaloff>:/res/client.ico</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>clients</string>
+     </attribute>
+     <widget class="QTabWidget" name="lineEdit_date_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1471</width>
+        <height>791</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="icon">
+        <iconset resource="rescource.qrc">
+         <normaloff>:/res/application.ico</normaloff>:/res/application.ico</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>work</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>551</width>
+          <height>521</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 13pt &quot;Calibri&quot;;</string>
+        </property>
+        <property name="title">
+         <string>New client</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,1,1,0,0,0,0">
+         <property name="spacing">
+          <number>7</number>
+         </property>
+         <property name="leftMargin">
+          <number>15</number>
+         </property>
+         <property name="topMargin">
+          <number>50</number>
+         </property>
+         <property name="rightMargin">
+          <number>15</number>
+         </property>
+         <property name="bottomMargin">
+          <number>50</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>CIN:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="client_lineEditCin"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>13</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>nom:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="client_lineEditNom"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>prenom:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="client_lineEditPrenom"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>telephone:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="client_lineEditTelephone"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>sexe:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="client_comboBoxSexe">
+           <item>
+            <property name="text">
+             <string>male</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>female</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string/>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_15">
+           <property name="text">
+            <string>reservation date:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="client_res_dateEdit"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLineEdit" name="lineEditSearchClient">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>50</y>
+          <width>295</width>
+          <height>42</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTableView" name="client_tableView">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>140</y>
+          <width>671</width>
+          <height>231</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="client_tri_btn_">
+        <property name="geometry">
+         <rect>
+          <x>970</x>
+          <y>80</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>tri</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/refresh.ico</normaloff>:/res/refresh.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>1070</x>
+          <y>470</y>
+          <width>171</width>
+          <height>141</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">image: url(:/ressources/logo/logo.png);
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="client_TriBox">
+        <property name="geometry">
+         <rect>
+          <x>960</x>
+          <y>40</y>
+          <width>151</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>nom_ascendant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>nom_descendant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>id_ascendant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>id_descendant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>sexe_ascendant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>sexe_descendant</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QFrame" name="clientChartFrame">
+        <property name="geometry">
+         <rect>
+          <x>609</x>
+          <y>399</y>
+          <width>481</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout"/>
+       </widget>
+       <widget class="QPushButton" name="client_exportPdf_btn">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>580</y>
+          <width>171</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>export </string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/file.ico</normaloff>:/res/file.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="client_update_btn">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>520</y>
+          <width>171</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>update </string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/refresh.ico</normaloff>:/res/refresh.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="client_delete_btn">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>520</y>
+          <width>171</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>delete</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/delete.ico</normaloff>:/res/delete.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="client_add_btn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>520</y>
+          <width>171</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add </string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/add.ico</normaloff>:/res/add.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="client_searchBox">
+        <property name="geometry">
+         <rect>
+          <x>560</x>
+          <y>60</y>
+          <width>82</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Prénom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="icon">
+        <iconset resource="rescource.qrc">
+         <normaloff>:/res/sms_1.ico</normaloff>:/res/sms_1.ico</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>sms</string>
+       </attribute>
+       <widget class="QPushButton" name="client_sms_Btn">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>170</y>
+          <width>151</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>send</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/send_1.ico</normaloff>:/res/send_1.ico</iconset>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="smsLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>170</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>160</y>
+          <width>141</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 18pt &quot;Segoe UI&quot;;</string>
+        </property>
+        <property name="text">
+         <string>enter ID :</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_6">
+       <attribute name="icon">
+        <iconset resource="rescource.qrc">
+         <normaloff>:/res/calendar.png</normaloff>:/res/calendar.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>calendar</string>
+       </attribute>
+       <widget class="QCalendarWidget" name="clients_calendarWidget">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>14</y>
+          <width>1141</width>
+          <height>291</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_date">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>330</y>
+          <width>1141</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTableView" name="clients_calander_tab_view">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>370</y>
+          <width>1141</width>
+          <height>241</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="equipement">
+     <attribute name="icon">
+      <iconset resource="rescource.qrc">
+       <normaloff>:/res/cleaning.ico</normaloff>:/res/cleaning.ico</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>equipement</string>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1521</width>
+        <height>741</height>
+       </rect>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <widget class="QWidget" name="tab1">
+       <attribute name="icon">
+        <iconset resource="rescource.qrc">
+         <normaloff>:/res/application.ico</normaloff>:/res/application.ico</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>work</string>
+       </attribute>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>461</width>
+          <height>541</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 13pt &quot;Calibri&quot;;</string>
+        </property>
+        <property name="title">
+         <string>New equipement</string>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,0,0,0,0,0,0,0,0,0,0,0,0">
+         <property name="spacing">
+          <number>7</number>
+         </property>
+         <property name="leftMargin">
+          <number>15</number>
+         </property>
+         <property name="topMargin">
+          <number>30</number>
+         </property>
+         <property name="rightMargin">
+          <number>15</number>
+         </property>
+         <property name="bottomMargin">
+          <number>30</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Reference:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditReference"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>11</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 11pt &quot;Calibri&quot;;</string>
+           </property>
+           <property name="text">
+            <string>Nom:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditNom"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Quantite:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditQuantite"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Prix:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditPrix"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_16">
+           <property name="text">
+            <string>Marque:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditMarque"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Etat:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBoxEtat">
+           <item>
+            <property name="text">
+             <string>En service</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Disponible</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>En panne</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBoxType">
+           <item>
+            <property name="text">
+             <string>Machine</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Materiel</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="equip_add_btn">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>560</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add </string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/add.ico</normaloff>:/res/add.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="equip_update_btn">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>560</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>update </string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/refresh.ico</normaloff>:/res/refresh.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="equip_delete_btn">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>560</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>delete</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/delete.ico</normaloff>:/res/delete.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="tri_btn">
+        <property name="geometry">
+         <rect>
+          <x>990</x>
+          <y>10</y>
+          <width>171</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Filtre</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/filter.ico</normaloff>:/res/filter.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="search_btn">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>20</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>search</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/search.ico</normaloff>:/res/search.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditSearchReference">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>40</y>
+          <width>295</width>
+          <height>42</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableViewEquipement">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>130</y>
+          <width>711</width>
+          <height>281</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>820</x>
+          <y>550</y>
+          <width>63</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBoxTri1">
+        <property name="geometry">
+         <rect>
+          <x>950</x>
+          <y>60</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Prix</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Marque</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QFrame" name="equipementChartFrame">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>430</y>
+          <width>601</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>1130</x>
+          <y>480</y>
+          <width>111</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../GS__equipement - Copy succes 2/Design a (((log 02555e2c-2316-439f-ae6c-687596cb4096.ico</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBoxSearch">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>70</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Reference</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Marque</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QComboBox" name="comboBoxTri2">
+        <property name="geometry">
+         <rect>
+          <x>1070</x>
+          <y>60</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Ascendant</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Desccendant</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="equip_exportPdf_btn">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>620</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>export </string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/file.ico</normaloff>:/res/file.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_21">
+       <attribute name="icon">
+        <iconset resource="rescource.qrc">
+         <normaloff>:/res/barcode-scan.ico</normaloff>:/res/barcode-scan.ico</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>scan</string>
+       </attribute>
+       <widget class="QLabel" name="qr_code">
+        <property name="geometry">
+         <rect>
+          <x>730</x>
+          <y>160</y>
+          <width>150</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>20</y>
+          <width>341</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #02355F;</string>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:14px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:11pt; font-weight:600; color:#03ace3;&quot;&gt;Scanner pour plus d'information&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="generateQRCodeButton">
+        <property name="geometry">
+         <rect>
+          <x>740</x>
+          <y>360</y>
+          <width>131</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Calibri&quot;;</string>
+        </property>
+        <property name="text">
+         <string>code</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/qr-code_1.ico</normaloff>:/res/qr-code_1.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditReference3">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>230</y>
+          <width>281</width>
+          <height>51</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_25">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>170</y>
+          <width>211</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Calibri&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Enter the reference : </string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="icon">
+        <iconset resource="rescource.qrc">
+         <normaloff>:/res/email.ico</normaloff>:/res/email.ico</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>mail</string>
+       </attribute>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>50</y>
+          <width>221</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Equipement's reference:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditMail">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>230</y>
+          <width>291</width>
+          <height>51</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="email_Btn">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>500</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Send</string>
+        </property>
+        <property name="icon">
+         <iconset resource="rescource.qrc">
+          <normaloff>:/res/send_1.ico</normaloff>:/res/send_1.ico</iconset>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEditReference_2">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>110</y>
+          <width>291</width>
+          <height>51</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="checkBoxGuide">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>320</y>
+          <width>151</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guide d'utilisation</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="checkBoxFormulaire">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>370</y>
+          <width>181</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Formulaire de feedback</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>190</y>
+          <width>151</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Enter your email:</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1560</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menucleanzy">
+    <property name="title">
+     <string>cleanzy</string>
+    </property>
+   </widget>
+   <addaction name="menucleanzy"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="rescource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>Design a (((log 02555e2c-2316-439f-ae6c-687596cb4096.ico</file>
+        <file>filter.ico</file>
+        <file>delete.ico</file>
+        <file>cleaning.ico</file>
+        <file>client.ico</file>
+        <file>application.ico</file>
+        <file>barcode-scan.ico</file>
+        <file>email.ico</file>
+        <file>search.ico</file>
+        <file>file.ico</file>
+        <file>add.ico</file>
+        <file>refresh.ico</file>
+        <file>Design a (((log 02555e2c-2316-439f-ae6c-687596cb4096.png</file>
+        <file>calendar.png</file>
+        <file>sms.png</file>
+        <file>send_1.ico</file>
+        <file>qr-code_1.ico</file>
+        <file>calendar_1.ico</file>
+        <file>sms_1.ico</file>
+    </qresource>
+</RCC>
